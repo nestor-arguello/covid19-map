@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Covid-19 Status Map`,
+    description: `A Covid-19 world status map, using Mapbox and Novel COVID API, with data from Johns Hopkins University, the New York Times, and Worldometers`,
+    author: `nestor-arguello.github.io`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -27,7 +27,7 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-sass`
+    `gatsby-plugin-sass`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

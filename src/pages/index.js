@@ -9,7 +9,7 @@ import './styles.scss'
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Covid-19 Map" />
     <h1 className="title">Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>

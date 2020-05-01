@@ -1,23 +1,34 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState } from 'react';
+import Map from '@urbica/react-map-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Layout from '../components/layout/layout.component';
+import SEO from '../components/seo';
+import { MAPBOX_ACCESS_TOKEN } from '../constants';
 
-import './styles.scss'
+import './styles.scss';
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Covid-19 Map" />
-    <h1 className="title">Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage = () => {
+  const [viewport, setViewport] = useState({
+    latitude: 0,
+    longitude: 0,
+    zoom: 0,
+  });
 
-export default IndexPage
+  return (
+    <Layout>
+      <SEO title='Covid-19 Status Map' />
+      <Map
+        style={{ width: '100%', height: '400px' }}
+        mapStyle='mapbox://styles/narguello/ck9kximbd27xc1ioj39b7shr0'
+        accessToken={MAPBOX_ACCESS_TOKEN}
+        latitude={viewport.latitude}
+        longitude={viewport.longitude}
+        zoom={viewport.zoom}
+        onViewportChange={setViewport}
+      />
+    </Layout>
+  );
+};
+
+export default IndexPage;

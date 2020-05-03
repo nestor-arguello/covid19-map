@@ -7,11 +7,11 @@ import './header.styles.scss';
 const Header = ({ siteTitle }) => (
   <header className='header'>
     <div className='title-container'>
-      <h1>
+      <h3>
         <Link to='/' className='link'>
           {siteTitle}
         </Link>
-      </h1>
+      </h3>
     </div>
   </header>
 );

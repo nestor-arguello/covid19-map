@@ -59,6 +59,7 @@ const createMarkers = ({ features, mapRef }) => {
 
       return L.marker(latlng, {
         icon: divIcon,
+        riseOnHover: true,
       });
     },
   }).addTo(mapRef.current);

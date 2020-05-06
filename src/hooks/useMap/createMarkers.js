@@ -1,18 +1,31 @@
 import L from 'leaflet';
 
+import formatNumber from '../../utility/formatNumber';
+
 const createMarkers = ({ features, mapRef }) => {
   L.geoJSON(features, {
     pointToLayer: (feature, latlng) => {
-      const { country, iso2, cases } = feature.properties;
+      const {
+        country,
+        iso2,
+        cases,
+        deaths,
+        recovered,
+        updated,
+      } = feature.properties;
 
-      const casesText = `${cases}`;
+      const casesString = `${cases}`;
 
-      const markerText =
+      const markerString =
         cases >= 1000000
-          ? `${casesText.slice(0, -6)}m+`
+          ? `${casesString.slice(0, -6)}m+`
           : cases >= 1000
-          ? `${casesText.slice(0, -3)}k+`
-          : casesText;
+          ? `${casesString.slice(0, -3)}k+`
+          : casesString;
+
+      const confirmedString = formatNumber(cases);
+      const deathsString = formatNumber(deaths);
+      const recoveredString = formatNumber(recovered);
 
       const flagEmoji =
         typeof iso2 === 'string'
@@ -23,11 +36,19 @@ const createMarkers = ({ features, mapRef }) => {
               )
           : '';
 
+      const updatedString = updated ? new Date(updated).toLocaleString() : '';
+
       const html = `
-            <span class="icon-marker">${markerText}
+            <span class="icon-marker">${markerString}
             </span>
             <span class="icon-tooltip">
               <h4>${flagEmoji} ${country}</h4>
+              <ul>
+                <li>Confirmed: ${confirmedString}</li>
+                <li>Deaths: ${deathsString}</li>
+                <li>Recovered: ${recoveredString}</li>
+                <li>Last update: ${updatedString}</li>
+              </ul>
             </span>
           `;
 

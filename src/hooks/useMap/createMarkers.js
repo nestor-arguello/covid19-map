@@ -27,6 +27,15 @@ const createMarkers = ({ features, mapRef }) => {
       const deathsString = formatNumber(deaths);
       const recoveredString = formatNumber(recovered);
 
+      const severity = 
+        cases >= 100000
+          ? 'high'
+          : cases >= 10000
+          ? 'mid'
+          : cases >= 1000
+          ? 'low'
+          : ''
+      
       const flagEmoji =
         typeof iso2 === 'string'
           ? iso2
@@ -39,7 +48,7 @@ const createMarkers = ({ features, mapRef }) => {
       const updatedString = updated ? new Date(updated).toLocaleString() : '';
 
       const html = `
-            <span class="icon-marker">${markerString}
+            <span class="icon-marker ${severity}">${markerString}
             </span>
             <span class="icon-tooltip">
               <h4>${flagEmoji} ${country}</h4>

@@ -27,15 +27,15 @@ const createMarkers = ({ features, mapRef }) => {
       const deathsString = formatNumber(deaths);
       const recoveredString = formatNumber(recovered);
 
-      const severity = 
+      const severity =
         cases >= 100000
           ? 'high'
           : cases >= 10000
           ? 'mid'
           : cases >= 1000
           ? 'low'
-          : ''
-      
+          : '';
+
       const flagEmoji =
         typeof iso2 === 'string'
           ? iso2

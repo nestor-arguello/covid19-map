@@ -1,6 +1,6 @@
-const L = typeof window !== `undefined` ? require('leaflet') : null;
-
 import formatNumber from '../../utility/formatNumber';
+import { handleMarkerClick } from '../../utility/mapEventHandlers';
+const L = typeof window !== `undefined` ? require('leaflet') : null;
 
 const createMarkers = ({ features, mapRef }) => {
   L.geoJSON(features, {
@@ -69,7 +69,7 @@ const createMarkers = ({ features, mapRef }) => {
       return L.marker(latlng, {
         icon: divIcon,
         riseOnHover: true,
-      });
+      }).on('click', handleMarkerClick);
     },
   }).addTo(mapRef.current);
 };

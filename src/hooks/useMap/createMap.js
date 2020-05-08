@@ -1,11 +1,11 @@
-const L = typeof window !== `undefined` ? require('leaflet') : null;
-
 import {
   MAPBOX_ACCESS_TOKEN,
   USER_NAME,
   CUSTOM_STYLE_ID,
   ATTRIBUTION,
 } from '../../constants';
+import { handleMapClick } from '../../utility/mapEventHandlers';
+const L = typeof window !== `undefined` ? require('leaflet') : null;
 
 const createMap = ({ mapId, mapRef }) => {
   const initialViewport = {
@@ -26,6 +26,8 @@ const createMap = ({ mapId, mapRef }) => {
       minZoom: 2,
     }
   ).addTo(map);
+
+  map.on('click', handleMapClick);
 
   mapRef.current = map;
 };

@@ -1,4 +1,4 @@
-import L from 'leaflet';
+const L = typeof window !== `undefined` ? require('leaflet') : null;
 
 import formatNumber from '../../utility/formatNumber';
 

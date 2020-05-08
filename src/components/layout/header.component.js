@@ -6,8 +6,6 @@ import covidLogo from '../../images/covid-logo.svg';
 
 import './header.styles.scss';
 
-import Logo from '../logo/logo.component';
-
 const Header = ({ siteTitle }) => (
   <header className="header">
     <div className="title-container">

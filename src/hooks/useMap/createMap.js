@@ -1,4 +1,4 @@
-import L from 'leaflet';
+const L = typeof window !== `undefined` ? require('leaflet') : null;
 
 import {
   MAPBOX_ACCESS_TOKEN,

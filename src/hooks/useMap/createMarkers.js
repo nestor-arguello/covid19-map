@@ -49,15 +49,15 @@ const createMarkers = ({ features, mapRef }) => {
 
       const html = `
             <span class="icon-marker ${severity}">${markerString}
-            </span>
-            <span class="icon-tooltip">
-              <h4>${flagEmoji} ${country}</h4>
-              <ul>
-                <li>Confirmed: ${confirmedString}</li>
-                <li>Deaths: ${deathsString}</li>
-                <li>Recovered: ${recoveredString}</li>
-                <li>Last update: ${updatedString}</li>
-              </ul>
+              <span class="icon-tooltip">
+                <h4  class="country">${flagEmoji} ${country}</h4>
+                <ul>
+                  <li><strong>Confirmed:</strong> ${confirmedString}</li>
+                  <li><strong>Deaths:</strong> ${deathsString}</li>
+                  <li><strong>Recovered:</strong> ${recoveredString}</li>
+                  <li><strong>Last update:</strong> ${updatedString}</li>
+                </ul>
+              </span>
             </span>
           `;
 

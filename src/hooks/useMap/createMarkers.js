@@ -46,20 +46,12 @@ const createMarkers = ({ features, mapRef }) => {
 
       const updatedString = updated ? new Date(updated).toLocaleString() : '';
 
-      const html = `
+      const iconHtmlContent = `
             <span class="icon-marker ${severity}">${markerString}
             </span>
           `;
 
-      const divIcon = L.divIcon({
-        className: 'icon',
-        html,
-      });
-
-      const popup = L.popup({
-        className: 'icon-popup',
-        closeButton: false,
-      }).setContent(`
+      const popupHtmlContent = `
         <h4  class="country">${flagEmoji} ${country}</h4>
         <ul>
           <li><strong>Confirmed:</strong> ${confirmedString}</li>
@@ -67,12 +59,28 @@ const createMarkers = ({ features, mapRef }) => {
           <li><strong>Recovered:</strong> ${recoveredString}</li>
           <li><strong>Last update:</strong> ${updatedString}</li>
         </ul>
-      `);
+      `;
+
+      const divIcon = L.divIcon({
+        className: 'icon',
+        html: iconHtmlContent,
+      });
+
+      const popup = L.popup({
+        className: 'icon-popup',
+      }).setContent(popupHtmlContent);
+
+      const tooltip = L.tooltip({
+        direction: 'top',
+        className: 'icon-tooltip',
+      }).setContent(`${country}`);
 
       return L.marker(latlng, {
         icon: divIcon,
         riseOnHover: true,
-      }).bindPopup(popup);
+      })
+        .bindPopup(popup)
+        .bindTooltip(tooltip);
     },
   }).addTo(mapRef.current);
 };

@@ -81,4 +81,10 @@
       }
     }
   }
+
+  .icon-tooltip, .leaflet-tooltip-top::before {
+    background-color: #1e3333;
+    color: #ffffff;
+    border: none;
+  }
 }

@@ -9,6 +9,10 @@ const useMap = ({ mapId, countries }) => {
 
   useEffect(() => {
     createMap({ mapId, mapRef });
+
+    return () => {
+      mapRef.current.remove();
+    }
   }, [mapId]);
 
   useEffect(() => {

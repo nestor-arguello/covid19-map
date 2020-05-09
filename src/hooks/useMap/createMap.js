@@ -27,7 +27,7 @@ const createMap = ({ mapId, mapRef }) => {
     }
   ).addTo(map);
 
-  map.on('click', handleMapClick);
+  // map.on('click', handleMapClick);
 
   mapRef.current = map;
 };

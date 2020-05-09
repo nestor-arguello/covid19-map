@@ -10,7 +10,10 @@
     font-family: 'Fira Sans', sans-serif;
 
     &-marker {
-      position: relative;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
       width: 36px;
       height: 36px;
       background-color: #ef5350;
@@ -34,64 +37,47 @@
       &.high {
         background-color: #d50000;
       }
+    }
+  }
 
-      &:hover,
-      &:focus,
-      &:active {
-        .icon-tooltip,
-        .icon-tooltip::before {
-          opacity: 1;
-          visibility: visible;
-        }
+  .leaflet-popup.icon-popup {
+    .leaflet-popup-content-wrapper {
+      display: flex;
+      bottom: 100%;
+      margin-bottom: 12px;
+      flex-direction: column;
+      background-color: #1e3333;
+      color: white;
+      font-size: 13px;
+      width: 170px;
+      padding: 20px 18px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.8);
+
+      .leaflet-popup-content {
+        margin: 0;
+        line-height: 1.6;
       }
 
-      .icon-tooltip {
-        position: absolute;
-        opacity: 0;
-        visibility: hidden;
-        display: flex;
-        bottom: 100%;
-        margin-bottom: 16px;
-        flex-direction: column;
-        background-color: #1e3333;
-        color: white;
-        font-size: 13px;
-        width: 150px;
-        padding: 10px;
-        border-radius: 6px;
-        box-shadow: 0 2px 6px 0px rgba(0, 0, 0, 0.8);
-        transition: all 0.2s ease-in-out;
+      .country {
+        margin-bottom: 15px;
+      }
 
-        &.show {
-          visibility: visible;
-          opacity: 1;
-        }
+      ul {
+        list-style-type: none;
+        margin: 0;
 
-        &::before {
-          position: absolute;
-          content: '';
-          width: 16px;
-          height: 16px;
-          background-color: #1e3333;
-          top: 100%;
-          margin-top: -9px;
-          left: 50%;
-          transform: translateX(-50%) rotate(45deg);
-          transition: all 0.2s ease-in-out;
-        }
-
-        .country {
-          margin-bottom: 15px;
-        }
-
-        ul {
-          list-style-type: none;
+        li {
           margin: 0;
-
-          li {
-            margin: 0;
-          }
         }
+      }
+    }
+
+    .leaflet-popup-tip-container {
+      margin-top: -12px;
+
+      .leaflet-popup-tip {
+        background-color: #1e3333;
       }
     }
   }

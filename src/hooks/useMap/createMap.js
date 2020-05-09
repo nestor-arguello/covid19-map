@@ -4,16 +4,19 @@ import {
   CUSTOM_STYLE_ID,
   ATTRIBUTION,
 } from '../../constants';
-import { handleMapClick } from '../../utility/mapEventHandlers';
 const L = typeof window !== `undefined` ? require('leaflet') : null;
 
 const createMap = ({ mapId, mapRef }) => {
   const initialViewport = {
     lat: 0,
     lng: 0,
-    zoom: 2,
+    zoom: 3,
   };
   const position = [initialViewport.lat, initialViewport.lng];
+  
+  const southWest = L.latLng(-89.98155760646617, -180);
+  const northEast = L.latLng(89.99346179538875, 191);
+  const bounds = L.latLngBounds(southWest, northEast);
 
   const map = L.map(mapId).setView(position, initialViewport.zoom);
 
@@ -23,11 +26,15 @@ const createMap = ({ mapId, mapRef }) => {
       tileSize: 512,
       zoomOffset: -1,
       attribution: ATTRIBUTION,
-      minZoom: 2,
+      minZoom: 3,
     }
   ).addTo(map);
 
-  // map.on('click', handleMapClick);
+  map.setMaxBounds(bounds);
+  
+  map.on('drag', function () {
+    map.panInsideBounds(bounds, { animate: false });
+  });
 
   mapRef.current = map;
 };

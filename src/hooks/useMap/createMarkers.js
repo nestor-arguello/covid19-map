@@ -1,6 +1,4 @@
 import formatNumber from '../../utility/formatNumber';
-import { handleMarkerClick } from '../../utility/mapEventHandlers';
-import { popup } from 'leaflet';
 const L = typeof window !== `undefined` ? require('leaflet') : null;
 
 const createMarkers = ({ features, mapRef }) => {
@@ -50,7 +48,6 @@ const createMarkers = ({ features, mapRef }) => {
 
       const html = `
             <span class="icon-marker ${severity}">${markerString}
-              
             </span>
           `;
 
@@ -63,21 +60,19 @@ const createMarkers = ({ features, mapRef }) => {
         className: 'icon-popup',
         closeButton: false,
       }).setContent(`
-        <span class="popup-content">
-          <h4  class="country">${flagEmoji} ${country}</h4>
-          <ul>
-            <li><strong>Confirmed:</strong> ${confirmedString}</li>
-            <li><strong>Deaths:</strong> ${deathsString}</li>
-            <li><strong>Recovered:</strong> ${recoveredString}</li>
-            <li><strong>Last update:</strong> ${updatedString}</li>
-          </ul>
-        </span>
+        <h4  class="country">${flagEmoji} ${country}</h4>
+        <ul>
+          <li><strong>Confirmed:</strong> ${confirmedString}</li>
+          <li><strong>Deaths:</strong> ${deathsString}</li>
+          <li><strong>Recovered:</strong> ${recoveredString}</li>
+          <li><strong>Last update:</strong> ${updatedString}</li>
+        </ul>
       `);
 
       return L.marker(latlng, {
         icon: divIcon,
         riseOnHover: true,
-      }).bindPopup(popup); //.on('click', handleMarkerClick);
+      }).bindPopup(popup);
     },
   }).addTo(mapRef.current);
 };

@@ -9,7 +9,7 @@ const useMap = ({ mapId, countries }) => {
 
   useEffect(() => {
     createMap({ mapId, mapRef });
-  }, []);
+  }, [mapId]);
 
   useEffect(() => {
     const features = createFeatures(countries);

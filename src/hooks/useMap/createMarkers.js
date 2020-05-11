@@ -73,14 +73,33 @@ const createMarkers = ({ features, mapRef }) => {
       const tooltip = L.tooltip({
         direction: 'top',
         className: 'icon-tooltip',
-      }).setContent(`${country}`);
+      })
+        .setContent(`${country}`)
+        .on(
+          'add',
+          function (event) {
+            if (this.isOpen()) {
+              event.target.remove();
+            }
+          },
+          popup
+        );
 
-      return L.marker(latlng, {
+      const marker = L.marker(latlng, {
         icon: divIcon,
         riseOnHover: true,
       })
         .bindPopup(popup)
-        .bindTooltip(tooltip);
+        .bindTooltip(tooltip)
+        .on(
+          'popupopen',
+          function (event) {
+            this.remove();
+          },
+          tooltip
+        );
+
+      return marker;
     },
   }).addTo(mapRef.current);
 };

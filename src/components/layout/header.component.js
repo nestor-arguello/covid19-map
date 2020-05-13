@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import covidLogo from '../../images/covid-logo.svg';
+import searchIcon from '../../images/search-icon.svg';
 
 import './header.styles.scss';
+import SearchBar from '../search-bar/search-bar.component';
 
 const Header = ({ siteTitle }) => (
   <header className="header">
@@ -15,6 +17,10 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h3>
+    </div>
+    <div className="search-bar">
+      <SearchBar />
+      {/* <img className="search-icon" src={searchIcon} alt="search-icon" /> */}
     </div>
   </header>
 );

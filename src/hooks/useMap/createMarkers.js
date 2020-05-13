@@ -1,4 +1,5 @@
 import formatNumber from '../../utility/formatNumber';
+import countryToFlag from '../../utility/countryToFlag';
 const L = typeof window !== `undefined` ? require('leaflet') : null;
 
 const createMarkers = ({ features, mapRef }) => {
@@ -35,14 +36,7 @@ const createMarkers = ({ features, mapRef }) => {
           ? 'low'
           : '';
 
-      const flagEmoji =
-        typeof iso2 === 'string'
-          ? iso2
-              .toUpperCase()
-              .replace(/./g, char =>
-                String.fromCodePoint(char.charCodeAt(0) + 127397)
-              )
-          : '';
+      const flagEmoji = typeof iso2 === 'string' ? countryToFlag(iso2) : '';
 
       const updatedString = updated ? new Date(updated).toLocaleString() : '';
 

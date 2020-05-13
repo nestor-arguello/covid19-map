@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from 'react';
 
 import createMap from './createMap';
@@ -17,7 +18,6 @@ const useMap = ({ mapId, countries }) => {
 
   useEffect(() => {
     const features = createFeatures(countries);
-    console.log(features);
 
     createMarkers({ features, mapRef });
   }, [countries]);

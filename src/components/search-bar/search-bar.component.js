@@ -1,95 +1,38 @@
 /* eslint-disable no-use-before-define */
-import React, { useContext } from 'react';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-
-import { CountriesContext } from '../../contexts/CountriesProvider';
-import countryToFlag from '../../utility/countryToFlag';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import './search-bar.styles.scss';
 
-const theme = createMuiTheme({
-  overrides: {
-    MuiAutocomplete: {
-      root: {
-        width: 300,
-        backgroundColor: '#3642ce',
-      },
-      input: {
-        paddingLeft: 25,
-        fontSize: 14,
-        fontWeight: 600,
-        color: '#ffffff',
-        fontFamily: `"Helvetica Neue", Arial, Helvetica, sans-serif`,
-        '&$focused': {
-          color: '#ffffff !important'
-        },
-      },
-      option: {
-        fontSize: 15,
-        fontFamily: `"Helvetica Neue", Arial, Helvetica, sans-serif`,
-        '& > span': {
-          marginRight: 10,
-          fontSize: 14,
-          fontWeight: 600,
-        },
-      },
-    },
-    MuiFormLabel: {
-      root: {
-        color: '#b9b9b9',
-        fontSize: 16,
-        fontFamily: `"Helvetica Neue", Arial, Helvetica, sans-serif`,
-        '&.Mui-focused': {
-          color: '#b9b9b9',
-        },
-      },
-    },
-    MuiOutlinedInput: {
-      notchedOutline: {
-        borderWidth: 1,
-        borderColor: '#999999 !important',
-      },
-    },
-    MuiIconButton: {
-      label: {
-        color: '#b9b9b9',
-      },
-    },
-  },
-});
-// const useStyles = makeStyles({
-//   root: {
-//     width: 300,
-//     backgroundColor: '#3642ce',
-//   },
-//   input: {
-//     paddingLeft: 25,
-//     fontSize: 16,
-//   },
-//   option: {
-//     fontSize: 15,
-//     '& > span': {
-//       marginRight: 10,
-//       fontSize: 18,
-//     },
-//   },
-// });
+import autoCompleteTheme from './autocomplete.styles';
+import countryToFlag from '../../utility/countryToFlag';
+import { useStoreValue } from '../../store';
+import { setSelectedCountryCoord } from '../../actions';
 
 const SearchBar = ({ ...props }) => {
-  const countries = useContext(CountriesContext);
+  const {
+    state: { countries },
+    dispatch,
+  } = useStoreValue();
+
+  const dispatchSetSelectedCountry = (lat, lng) =>
+    dispatch(setSelectedCountryCoord(lat, lng));
+
+  const handleChange = dispatchFunction => (event, value, reason) => {
+    if (reason === 'select-option' && value && value.countryInfo) {
+      const { lat, long: lng } = value.countryInfo;
+
+      dispatchFunction(lat, lng);
+    }
+  };
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={autoCompleteTheme}>
       <Autocomplete
         id="country-select-demo"
         options={countries}
-        // classes={{
-        //   option,
-        //   root,
-        //   input,
-        // }}
         autoHighlight
         getOptionLabel={option => option.country}
         renderOption={option => (
@@ -105,10 +48,10 @@ const SearchBar = ({ ...props }) => {
             variant="outlined"
             inputProps={{
               ...params.inputProps,
-              autoComplete: 'new-password', // disable autocomplete and autofill
             }}
           />
         )}
+        onChange={handleChange(dispatchSetSelectedCountry)}
       />
     </ThemeProvider>
   );

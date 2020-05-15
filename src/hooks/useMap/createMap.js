@@ -13,7 +13,7 @@ const createMap = ({ mapId, mapRef }) => {
     zoom: 3,
   };
   const position = [initialViewport.lat, initialViewport.lng];
-  
+
   const southWest = L.latLng(-89.98155760646617, -180);
   const northEast = L.latLng(89.99346179538875, 191);
   const bounds = L.latLngBounds(southWest, northEast);
@@ -31,7 +31,7 @@ const createMap = ({ mapId, mapRef }) => {
   ).addTo(map);
 
   map.setMaxBounds(bounds);
-  
+
   map.on('drag', function () {
     map.panInsideBounds(bounds, { animate: false });
   });

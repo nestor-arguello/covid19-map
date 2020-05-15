@@ -1,14 +1,28 @@
-import React, { useContext } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import useMap from '../../hooks/useMap';
-import { CountriesContext } from '../../contexts/CountriesProvider';
 
 import './covid-map.styles.scss';
 
+import useMap from '../../hooks/useMap';
+import { useStoreValue } from '../../store';
+
 const CovidMap = ({ ...props }) => {
-  const countries = useContext(CountriesContext);
-  useMap({ mapId: 'map', countries });
-  console.log(countries);
+  const {
+    state: { countries, mapRef, selectedCountryCoord },
+    dispatch,
+  } = useStoreValue();
+
+  useMap({ mapId: 'map', selectedCountryCoord, countries, dispatch });
+
+  console.log(
+    'map: ',
+    mapRef,
+    'countries: ',
+    countries,
+    'selectedCountryCoord: ',
+    selectedCountryCoord
+  );
 
   return (
     <>

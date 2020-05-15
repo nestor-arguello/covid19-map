@@ -1,0 +1,5 @@
+export const SET_COUNTRIES = 'SET_COUNTRIES';
+
+export const SET_MAP = 'SET_MAP';
+
+export const SET_SELECTED_COUNTRY_COORD = 'SET_SELECTED_COUNTRY_COORD';

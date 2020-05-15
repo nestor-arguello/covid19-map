@@ -2,10 +2,11 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import './header.styles.scss';
+
 import covidLogo from '../../images/covid-logo.svg';
 import searchIcon from '../../images/search-icon.svg';
 
-import './header.styles.scss';
 import SearchBar from '../search-bar/search-bar.component';
 
 const Header = ({ siteTitle }) => (

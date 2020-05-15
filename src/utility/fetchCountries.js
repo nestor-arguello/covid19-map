@@ -1,13 +1,15 @@
 import { COVID_API_URL } from '../constants';
 import axios from 'axios';
 
-const fetchCountries = async setCountries => {
+import { setCountries } from '../actions';
+
+const fetchCountries = async dispatch => {
   try {
     const response = await axios.get(COVID_API_URL);
 
     const { data = [] } = response;
 
-    if (typeof setCountries === 'function') setCountries(data);
+    if (typeof dispatch === 'function') dispatch(setCountries(data));
 
     return data;
   } catch (error) {

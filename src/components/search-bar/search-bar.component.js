@@ -13,7 +13,7 @@ import { setSelectedCountryCoord } from '../../actions';
 
 const SearchBar = ({ ...props }) => {
   const {
-    state: { countries },
+    state: { countries = [] } = {},
     dispatch,
   } = useStoreValue();
 

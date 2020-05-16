@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useContext } from 'react';
 import { initialState, reducer } from '../reducer';
 
-export const StoreContext = createContext();
+export const StoreContext = createContext(initialState);
 
 export const StoreProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);

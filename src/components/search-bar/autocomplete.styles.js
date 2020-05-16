@@ -5,7 +5,7 @@ const autoCompleteTheme = {
     MuiAutocomplete: {
       root: {
         width: 300,
-        backgroundColor: '#3642ce',
+        backgroundColor: '#2b328d',
       },
       input: {
         paddingLeft: 25,

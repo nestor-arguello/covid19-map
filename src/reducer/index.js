@@ -21,18 +21,21 @@ export const reducer = (state, action) => {
         countries: payload,
       };
     }
+    
     case SET_MAP: {
       return {
         ...state,
         map: payload,
       };
     }
+    
     case SET_SELECTED_COUNTRY_COORD: {
       return {
         ...state,
         selectedCountryCoord: payload,
       };
     }
+    
     default:
       return state;
   }

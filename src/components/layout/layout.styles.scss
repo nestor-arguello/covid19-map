@@ -625,8 +625,14 @@ pre tt:after {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100vh;
+  
+  .main-content {
+    flex: 1;
+
+    main {
+      height: 100%;
+    }
+  }
 }
 
-.main-content {
-  flex: 1;
-}

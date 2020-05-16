@@ -5,7 +5,6 @@ import React from 'react';
 import './header.styles.scss';
 
 import covidLogo from '../../images/covid-logo.svg';
-import searchIcon from '../../images/search-icon.svg';
 
 import SearchBar from '../search-bar/search-bar.component';
 
@@ -21,7 +20,6 @@ const Header = ({ siteTitle }) => (
     </div>
     <div className="search-bar">
       <SearchBar />
-      {/* <img className="search-icon" src={searchIcon} alt="search-icon" /> */}
     </div>
   </header>
 );

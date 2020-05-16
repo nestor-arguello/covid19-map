@@ -1,6 +1,6 @@
 #map {
   width: 100%;
-  height: 60vh;
+  height: 100%;
 
   .leaflet-container {
     font-family: inherit;
@@ -46,7 +46,7 @@
       bottom: 100%;
       margin-bottom: 12px;
       flex-direction: column;
-      background-color: #1e3333;
+      background-color: rgba(71, 11, 2, 0.9);
       color: white;
       font-size: 13px;
       width: 170px;
@@ -77,13 +77,13 @@
       margin-top: -12px;
 
       .leaflet-popup-tip {
-        background-color: #1e3333;
+        background-color: rgba(71, 11, 2, 0.9);
       }
     }
   }
 
   .icon-tooltip, .leaflet-tooltip-top::before {
-    background-color: #1e3333;
+    background-color: rgba(71, 11, 2, 0.9);
     color: #ffffff;
     border: none;
   }

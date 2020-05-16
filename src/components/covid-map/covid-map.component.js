@@ -9,20 +9,11 @@ import { useStoreValue } from '../../store';
 
 const CovidMap = ({ ...props }) => {
   const {
-    state: { countries, mapRef, selectedCountryCoord },
+    state: { countries, selectedCountryCoord },
     dispatch,
   } = useStoreValue();
 
   useMap({ mapId: 'map', selectedCountryCoord, countries, dispatch });
-
-  console.log(
-    'map: ',
-    mapRef,
-    'countries: ',
-    countries,
-    'selectedCountryCoord: ',
-    selectedCountryCoord
-  );
 
   return (
     <>

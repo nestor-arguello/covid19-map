@@ -44,7 +44,7 @@ const SearchBar = ({ ...props }) => {
         renderInput={params => (
           <TextField
             {...params}
-            label="Choose a country"
+            label="Search country"
             variant="outlined"
             inputProps={{
               ...params.inputProps,

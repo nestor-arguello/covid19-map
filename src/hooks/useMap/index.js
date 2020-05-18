@@ -13,7 +13,7 @@ const useMap = ({ mapId, countries, selectedCountryCoord, dispatch }) => {
   const mapRef = useRef(null);
 
   useEffect(() => {
-    createMap({ mapId, mapRef });
+    createMap({ mapId, mapRef, dispatch });
     dispatch(setMap(mapRef));
 
     return () => {

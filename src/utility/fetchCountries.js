@@ -13,7 +13,7 @@ const fetchCountries = async dispatch => {
 
     return data;
   } catch (error) {
-    console.log('Failed API request', error.message);
+    alert('Communication error fetching countries data. Please refresh the page in a few minutes. ', error.message);
     return;
   }
 };

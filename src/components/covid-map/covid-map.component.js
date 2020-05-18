@@ -9,7 +9,7 @@ import { useStoreValue } from '../../store';
 
 const CovidMap = ({ ...props }) => {
   const {
-    state: { countries, selectedCountryCoord },
+    state: { countries, selectedCountryCoord, mapLoaded },
     dispatch,
   } = useStoreValue();
 
@@ -26,7 +26,11 @@ const CovidMap = ({ ...props }) => {
         />
       </Helmet>
 
-      <div id="map" />
+      <div id="map">
+        <div className={`map-backdrop ${mapLoaded ? 'hide' : ''}`}>
+          <h4 className="map-backdrop-msg">Loading map...</h4>
+        </div>
+      </div>
     </>
   );
 };

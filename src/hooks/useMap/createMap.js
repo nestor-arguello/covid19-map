@@ -4,9 +4,12 @@ import {
   CUSTOM_STYLE_ID,
   ATTRIBUTION,
 } from '../../constants';
+
+import { setMapLoaded } from '../../actions';
+
 const L = typeof window !== `undefined` ? require('leaflet') : null;
 
-const createMap = ({ mapId, mapRef }) => {
+const createMap = ({ mapId, mapRef, dispatch }) => {
   const initialViewport = {
     lat: 0,
     lng: 0,
@@ -28,7 +31,26 @@ const createMap = ({ mapId, mapRef }) => {
       attribution: ATTRIBUTION,
       minZoom: 3,
     }
-  ).addTo(map);
+  )
+    .on(
+      'load',
+      function loadMap() {
+        dispatch(setMapLoaded(true));
+        this.off('load');
+      },
+      this
+    )
+    .on(
+      'tileerror',
+      function alertMapError() {
+        alert(
+          'Communication error loading the map. Please refresh the page in a few minutes'
+        );
+        this.off('tileerror');
+      },
+      this
+    )
+    .addTo(map);
 
   map.setMaxBounds(bounds);
 

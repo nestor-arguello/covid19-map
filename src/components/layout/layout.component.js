@@ -11,6 +11,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import Header from './header.component';
 import Footer from './footer.component';
+import Drawer from './drawer.component';
 
 import './layout.styles.scss';
 
@@ -29,6 +30,7 @@ const Layout = ({ children }) => {
     <div className='main-wrapper'>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div className='main-content'>
+        <Drawer />
         <main>{children}</main>
       </div>
       <Footer />

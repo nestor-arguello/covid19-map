@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Covid-19 Status Map`,
+    title: `Covid-19 Status`,
     description: `A Covid-19 world status map, using Mapbox and Novel COVID API, with data from Johns Hopkins University, the New York Times, and Worldometers`,
     author: `nestor-arguello.github.io`,
   },

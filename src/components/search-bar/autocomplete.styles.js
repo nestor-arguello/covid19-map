@@ -4,7 +4,7 @@ const autoCompleteTheme = {
   overrides: {
     MuiAutocomplete: {
       root: {
-        width: 300,
+        width: '100%',
         backgroundColor: '#2b328d',
       },
       input: {

@@ -5,3 +5,7 @@ export const SET_MAP = 'SET_MAP';
 export const SET_SELECTED_COUNTRY_COORD = 'SET_SELECTED_COUNTRY_COORD';
 
 export const SET_MAP_LOADED = 'SET_MAP_LOADED';
+
+export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
+
+export const CLOSE_DRAWER = 'CLOSE_DRAWER';

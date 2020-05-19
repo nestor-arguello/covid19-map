@@ -13,7 +13,8 @@ const fetchCountries = async dispatch => {
 
     return data;
   } catch (error) {
-    alert('Communication error fetching countries data. Please refresh the page in a few minutes. ', error.message);
+    alert('Communication error fetching countries data. Please refresh the page in a few minutes.');
+    console.log(error.message);
     return;
   }
 };

@@ -5,24 +5,48 @@ import React from 'react';
 import './header.styles.scss';
 
 import covidLogo from '../../images/covid-logo.svg';
+import chartIcon from '../../images/bar-chart.svg';
 
 import SearchBar from '../search-bar/search-bar.component';
+import { useStoreValue } from '../../store';
+import { toggleDrawer } from '../../actions';
 
-const Header = ({ siteTitle }) => (
-  <header className="header">
-    <div className="title-container">
-      <h3 className="title">
-        <img src={covidLogo} alt="covid-logo" />
-        <Link to="/" className="link">
-          {siteTitle}
-        </Link>
-      </h3>
-    </div>
-    <div className="search-bar">
-      <SearchBar />
-    </div>
-  </header>
-);
+const Header = ({ siteTitle }) => {
+  const { dispatch } = useStoreValue();
+
+  const handleClick = () => {
+    dispatch(toggleDrawer());
+  };
+
+  return (
+    <header className="header">
+      <div className="title-container">
+        <h3 className="title">
+          <img src={covidLogo} alt="covid-logo" />
+          <Link to="/" className="link">
+            {siteTitle}
+          </Link>
+        </h3>
+      </div>
+
+      <div className="search-bar-container">
+        <div className="search-bar">
+          <SearchBar />
+        </div>
+      </div>
+
+      <div className="drawer-btn-container">
+        <button
+          className="drawer-btn"
+          type="button"
+          onClick={handleClick}
+        >
+          <img src={chartIcon} alt="Chart" />
+        </button>
+      </div>
+    </header>
+  );
+};
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

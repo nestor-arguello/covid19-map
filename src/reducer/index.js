@@ -47,10 +47,16 @@ export const reducer = (state, action) => {
     case TOGGLE_DRAWER: {
       return {
         ...state,
-        drawerOpened: !state.drawerOpened,        
-      }
+        drawerOpened: !state.drawerOpened,
+      };
     }
-    
+    case CLOSE_DRAWER: {
+      return {
+        ...state,
+        drawerOpened: false,
+      };
+    }
+
     default:
       return state;
   }

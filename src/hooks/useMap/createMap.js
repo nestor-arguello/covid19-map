@@ -5,7 +5,7 @@ import {
   ATTRIBUTION,
 } from '../../constants';
 
-import { setMapLoaded } from '../../actions';
+import { setMapLoaded, closeDrawer } from '../../actions';
 
 const L = typeof window !== `undefined` ? require('leaflet') : null;
 
@@ -54,9 +54,13 @@ const createMap = ({ mapId, mapRef, dispatch }) => {
 
   map.setMaxBounds(bounds);
 
-  map.on('drag', function () {
-    map.panInsideBounds(bounds, { animate: false });
-  });
+  map
+    .on('drag', function () {
+      map.panInsideBounds(bounds, { animate: false });
+    })
+    .on('click', function () {
+      dispatch(closeDrawer());
+    });
 
   mapRef.current = map;
 };

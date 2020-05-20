@@ -28,7 +28,7 @@ const useMap = ({ mapId, countries, selectedCountryCoord, dispatch }) => {
   useEffect(() => {
     const features = createFeatures(countries);
 
-    createMarkers({ features, mapRef });
+    createMarkers({ features, mapRef, dispatch });
   }, [countries]);
 
   useEffect(() => {

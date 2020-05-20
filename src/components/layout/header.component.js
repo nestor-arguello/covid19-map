@@ -12,7 +12,10 @@ import { useStoreValue } from '../../store';
 import { toggleDrawer } from '../../actions';
 
 const Header = ({ siteTitle }) => {
-  const { dispatch } = useStoreValue();
+  const {
+    state: { drawerOpened },
+    dispatch,
+  } = useStoreValue();
 
   const handleClick = () => {
     dispatch(toggleDrawer());
@@ -36,13 +39,9 @@ const Header = ({ siteTitle }) => {
       </div>
 
       <div className="drawer-btn-container">
-        <button
-          className="drawer-btn"
-          type="button"
-          onClick={handleClick}
-        >
+        <div className={`drawer-btn ${drawerOpened ? 'opened' : ''}`} onClick={handleClick}>
           <img src={chartIcon} alt="Chart" />
-        </button>
+        </div>
       </div>
     </header>
   );

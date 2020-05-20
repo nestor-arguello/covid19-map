@@ -4,86 +4,126 @@
   justify-content: flex-start;
   position: relative;
   padding: 10px 0;
+}
 
-  .title-container {
-    padding: 0 10px 0 12px;
-    display: flex;
-    align-items: center;
+.title-container {
+  padding: 0 10px 0 12px;
+  display: flex;
+  align-items: center;
+}
 
-    .title {
-      margin: 0;
-      display: flex;
-      align-items: center;
+.title {
+  margin: 0;
+  display: flex;
+  align-items: center;
 
-      img {
-        width: 35px;
-        margin: 0;
-      }
+  img {
+    width: 35px;
+    margin: 0;
+  }
+}
 
-      .link {
-        display: none;
-        color: white;
-        opacity: 0.9;
-        text-decoration: none;
-        margin-left: 15px;
-        margin-bottom: 5px;
-      }
-    }
+.link {
+  display: none;
+  color: white;
+  opacity: 0.9;
+  text-decoration: none;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+.search-bar-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  width: 100%;
+  max-width: 300px;
+}
+
+.drawer-btn-container {
+  display: flex;
+  padding: 0 10px 0 10px;
+  justify-content: center;
+  align-items: center;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.drawer-btn {
+  position: relative;
+  display: block;
+  background-color: transparent;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+
+  &::before {
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    background-color: #4f57be;
+    transition: all 150ms ease-in;
   }
 
-  .search-bar-container {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
-
-    .search-bar {
-      display: flex;
-      justify-content: center;
-      z-index: 10;
-      width: 100%;
-      max-width: 300px;
-    }
+  &.opened::before,
+  &:hover::before {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
   }
 
-  .drawer-btn-container {
-    display: flex;
-    padding: 0 10px 0 10px;
-    justify-content: center;
-    align-items: center;
+  & img {
+    width: 26px;
+    height: 26px;
+    margin: 0;
+    opacity: 0.85;
+    z-index: 1;
+    transition: all 150ms ease-out;
+  }
 
-    .drawer-btn {
-      border: none;
-      display: block;
-      padding: 0;
-      background-color: transparent;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0.85;
-      transition: all 150ms ease-out;
+  &.opened img,
+  &:hover img {
+    opacity: 1;
+  }
+}
 
-      &:hover, &:focus, &:active {
-        opacity: 1;
-      }
+@media (hover: none) {
+  .drawer-btn:hover::before {
+    opacity: 0;
+    width: 70%;
+    height: 70%;
+  }
 
-      & img {
-        width: 40px;
-        height: 40px;
-        margin: 0;
-      }
-    }
+  .drawer-btn.opened:hover::before {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+  }
+
+  .drawer-btn:hover img {
+    opacity: 0.85;
+  }
+
+  .drawer-btn.opened:hover img {
+    opacity: 1;
   }
 }
 
 @media only screen and (min-width: 600px) {
-  .header {
-    .title-container {
-      .title .link {
-        display: inline-block;
-      }
-    }
+  .link {
+    display: inline-block;
   }
 }

@@ -4,6 +4,7 @@ import {
   SET_SELECTED_COUNTRY_COORD,
   SET_MAP_LOADED,
   TOGGLE_DRAWER,
+  CLOSE_DRAWER,
 } from '../actions/actionTypes';
 
 export const setCountries = countries => ({
@@ -28,4 +29,8 @@ export const setMapLoaded = isLoaded => ({
 
 export const toggleDrawer = () => ({
   type: TOGGLE_DRAWER,
-})
+});
+
+export const closeDrawer = () => ({
+  type: CLOSE_DRAWER,
+});

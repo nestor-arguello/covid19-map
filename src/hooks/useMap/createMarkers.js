@@ -1,8 +1,9 @@
 import formatNumber from '../../utility/formatNumber';
 import countryToFlag from '../../utility/countryToFlag';
+import { closeDrawer } from '../../actions';
 const L = typeof window !== `undefined` ? require('leaflet') : null;
 
-const createMarkers = ({ features, mapRef }) => {
+const createMarkers = ({ features, mapRef, dispatch }) => {
   L.geoJSON(features, {
     pointToLayer: (feature, latlng) => {
       const {
@@ -63,7 +64,6 @@ const createMarkers = ({ features, mapRef }) => {
       const popup = L.popup({
         className: 'icon-popup',
       }).setContent(popupHtmlContent);
-
       const tooltip = L.tooltip({
         direction: 'top',
         className: 'icon-tooltip',
@@ -91,7 +91,10 @@ const createMarkers = ({ features, mapRef }) => {
             this.remove();
           },
           tooltip
-        );
+        )
+        .on('click', function () {
+          dispatch(closeDrawer());
+        });
 
       return marker;
     },

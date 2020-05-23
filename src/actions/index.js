@@ -5,6 +5,7 @@ import {
   SET_MAP_LOADED,
   TOGGLE_DRAWER,
   CLOSE_DRAWER,
+  SET_LAST_UPDATE,
 } from '../actions/actionTypes';
 
 export const setCountries = countries => ({
@@ -33,4 +34,9 @@ export const toggleDrawer = () => ({
 
 export const closeDrawer = () => ({
   type: CLOSE_DRAWER,
+});
+
+export const setLastUpdate = updateString => ({
+  type: SET_LAST_UPDATE,
+  payload: updateString,
 });

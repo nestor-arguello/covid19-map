@@ -17,7 +17,7 @@ const Header = ({ siteTitle }) => {
     dispatch,
   } = useStoreValue();
 
-  const handleClick = () => {
+  const handleToggleDrawer = () => {
     dispatch(toggleDrawer());
   };
 
@@ -39,7 +39,14 @@ const Header = ({ siteTitle }) => {
       </div>
 
       <div className="drawer-btn-container">
-        <div className={`drawer-btn ${drawerOpened ? 'opened' : ''}`} onClick={handleClick}>
+        <div
+          className={`drawer-btn ${drawerOpened ? 'opened' : ''}`}
+          onClick={handleToggleDrawer}
+          onKeyPress={handleToggleDrawer}
+          role="button"
+          tabIndex="0"
+          title="Open chart"
+        >
           <img src={chartIcon} alt="Chart" />
         </div>
       </div>

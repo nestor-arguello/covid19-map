@@ -6,6 +6,7 @@ import {
   SET_MAP_LOADED,
   TOGGLE_DRAWER,
   CLOSE_DRAWER,
+  SET_LAST_UPDATE,
 } from '../actions/actionTypes';
 
 export const initialState = {
@@ -14,6 +15,7 @@ export const initialState = {
   selectedCountryCoord: null,
   mapLoaded: false,
   drawerOpened: false,
+  lastUpdate: '',
 };
 
 export const reducer = (state, action) => {
@@ -54,6 +56,12 @@ export const reducer = (state, action) => {
       return {
         ...state,
         drawerOpened: false,
+      };
+    }
+    case SET_LAST_UPDATE: {
+      return {
+        ...state,
+        lastUpdate: payload,
       };
     }
 

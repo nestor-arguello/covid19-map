@@ -9,13 +9,10 @@ import './search-bar.styles.scss';
 import autoCompleteTheme from './autocomplete.styles';
 import countryToFlag from '../../utility/countryToFlag';
 import { useStoreValue } from '../../store';
-import { setSelectedCountryCoord } from '../../actions';
+import { setSelectedCountryCoord, closeDrawer } from '../../actions';
 
 const SearchBar = ({ ...props }) => {
-  const {
-    state: { countries = [] } = {},
-    dispatch,
-  } = useStoreValue();
+  const { state: { countries = [] } = {}, dispatch } = useStoreValue();
 
   const dispatchSetSelectedCountry = (lat, lng) =>
     dispatch(setSelectedCountryCoord(lat, lng));
@@ -26,6 +23,10 @@ const SearchBar = ({ ...props }) => {
 
       dispatchFunction(lat, lng);
     }
+  };
+
+  const handleFocus = () => {
+    dispatch(closeDrawer());
   };
 
   return (
@@ -52,6 +53,7 @@ const SearchBar = ({ ...props }) => {
           />
         )}
         onChange={handleChange(dispatchSetSelectedCountry)}
+        onFocus={handleFocus}
       />
     </ThemeProvider>
   );

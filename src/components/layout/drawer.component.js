@@ -1,7 +1,9 @@
 import React from 'react';
 
 import './drawer.styles.scss';
+
 import { useStoreValue } from '../../store';
+import TopCountries from '../top-countries/top-countries.component';
 
 const Drawer = ({ ...props }) => {
   const {
@@ -9,8 +11,10 @@ const Drawer = ({ ...props }) => {
   } = useStoreValue();
 
   return (
-    <div className={`drawer ${drawerOpened ? 'opened' : ''}`}>
-      <div>top countries list</div>
+    <div className={`drawer ${drawerOpened ? 'opened' : ''}`} tabIndex="0">
+      <div className="top-countries-container">
+        <TopCountries />
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import formatNumber from '../../utility/formatNumber';
 import countryToFlag from '../../utility/countryToFlag';
-import { closeDrawer } from '../../actions';
+import { closeDrawer, setLastUpdate } from '../../actions';
 const L = typeof window !== `undefined` ? require('leaflet') : null;
 
 const createMarkers = ({ features, mapRef, dispatch }) => {
@@ -40,6 +40,8 @@ const createMarkers = ({ features, mapRef, dispatch }) => {
       const flagEmoji = typeof iso2 === 'string' ? countryToFlag(iso2) : '';
 
       const updatedString = updated ? new Date(updated).toLocaleString() : '';
+      
+      dispatch(setLastUpdate(updatedString));
 
       const iconHtmlContent = `
             <span class="icon-marker ${severity}">${markerString}

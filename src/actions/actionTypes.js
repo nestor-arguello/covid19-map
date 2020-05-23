@@ -9,3 +9,5 @@ export const SET_MAP_LOADED = 'SET_MAP_LOADED';
 export const TOGGLE_DRAWER = 'TOGGLE_DRAWER';
 
 export const CLOSE_DRAWER = 'CLOSE_DRAWER';
+
+export const SET_LAST_UPDATE = 'SET_LAST_UPDATE';

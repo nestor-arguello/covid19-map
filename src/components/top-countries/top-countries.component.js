@@ -4,11 +4,32 @@ import './top-countries.styles.scss';
 
 import TopCategory from '../top-category/top-category.component';
 import { useStoreValue } from '../../store';
+import getTopCases from './getTopCases';
 
 const TopCountries = ({ ...props }) => {
   const {
-    state: { lastUpdate },
+    state: { lastUpdate, countries },
   } = useStoreValue();
+
+  const topCasesEurope = getTopCases({
+    countries,
+    continent: 'Europe',
+    topNumber: 5,
+    seriesTopics: [
+      {
+        title: 'Confirmed',
+        propName: 'cases', 
+      },
+      {
+        title: 'Recovered',
+        propName: 'recovered', 
+      },
+      {
+        title: 'Deaths',
+        propName: 'deaths', 
+      },
+    ]
+  })  
 
   return (
     <div className="top-countries">
@@ -17,7 +38,14 @@ const TopCountries = ({ ...props }) => {
       <span className="updated-date">
         {lastUpdate ? `Last update: ${lastUpdate}` : null}
       </span>
-      <TopCategory />
+      {console.log(topCasesEurope)}
+      
+      <TopCategory 
+        title="Europe" 
+        countriesNames={topCasesEurope.countriesNames}
+        seriesData={topCasesEurope.seriesData}
+      />
+
       <span className="sources-names">
         <em>*</em> Data from Johns Hopkins University, the New York Times,
         Worldometers and Apple reports.

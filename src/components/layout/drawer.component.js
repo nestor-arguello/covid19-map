@@ -7,7 +7,7 @@ import TopCountries from '../top-countries/top-countries.component';
 
 const Drawer = ({ ...props }) => {
   const {
-    state: { drawerOpened },
+    state: { drawerOpened } = {},
   } = useStoreValue();
 
   return (

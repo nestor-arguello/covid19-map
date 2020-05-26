@@ -13,7 +13,7 @@ import { toggleDrawer } from '../../actions';
 
 const Header = ({ siteTitle }) => {
   const {
-    state: { drawerOpened },
+    state: { drawerOpened } = {},
     dispatch,
   } = useStoreValue();
 

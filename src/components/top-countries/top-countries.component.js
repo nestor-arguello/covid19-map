@@ -8,7 +8,7 @@ import setTopCategoriesList from './setTopCategoriesList';
 
 const TopCountries = ({ ...props }) => {
   const {
-    state: { lastUpdate, countries },
+    state: { lastUpdate, countries } = {},
   } = useStoreValue();
 
   const topCategoryList = setTopCategoriesList(countries);

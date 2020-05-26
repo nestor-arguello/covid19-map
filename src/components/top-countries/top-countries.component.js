@@ -4,32 +4,14 @@ import './top-countries.styles.scss';
 
 import TopCategory from '../top-category/top-category.component';
 import { useStoreValue } from '../../store';
-import getTopCases from './getTopCases';
+import setTopCategoriesList from './setTopCategoriesList';
 
 const TopCountries = ({ ...props }) => {
   const {
     state: { lastUpdate, countries },
   } = useStoreValue();
 
-  const topCasesEurope = getTopCases({
-    countries,
-    continent: 'Europe',
-    topNumber: 5,
-    seriesTopics: [
-      {
-        title: 'Confirmed',
-        propName: 'cases', 
-      },
-      {
-        title: 'Recovered',
-        propName: 'recovered', 
-      },
-      {
-        title: 'Deaths',
-        propName: 'deaths', 
-      },
-    ]
-  })  
+  const topCategoryList = setTopCategoriesList(countries);
 
   return (
     <div className="top-countries">
@@ -38,13 +20,15 @@ const TopCountries = ({ ...props }) => {
       <span className="updated-date">
         {lastUpdate ? `Last update: ${lastUpdate}` : null}
       </span>
-      {console.log(topCasesEurope)}
-      
-      <TopCategory 
-        title="Europe" 
-        countriesNames={topCasesEurope.countriesNames}
-        seriesData={topCasesEurope.seriesData}
-      />
+
+      {topCategoryList.map(category => (
+        <TopCategory
+          key={category.title}
+          title={category.title}
+          countriesNames={category.countriesNames}
+          seriesData={category.seriesData}
+        />
+      ))}
 
       <span className="sources-names">
         <em>*</em> Data from Johns Hopkins University, the New York Times,

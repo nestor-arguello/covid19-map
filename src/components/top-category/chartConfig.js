@@ -36,7 +36,7 @@ export default {
     },
     dataLabels: {
       enabled: true,
-      offsetX: 30,
+      offsetX: 42,
       style: {
         fontSize: '12px',
         fontFamily: 'Fira Sans, sans-serif',
@@ -75,7 +75,18 @@ export default {
           fontSize: '10px',
           fontFamily: 'Fira Sans, sans-serif',
         },
-        formatter: formatNumber,
+        formatter: value => {
+          const valueString = `${value}`;
+
+          const formattedValue =
+            value >= 1000000
+              ? `${valueString.slice(0, -6)}m`
+              : value >= 1000
+              ? `${valueString.slice(0, -3)}k`
+              : valueString;
+
+          return formattedValue;
+        },
       },
     },
     yaxis: {

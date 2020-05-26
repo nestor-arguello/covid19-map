@@ -21,7 +21,6 @@ const getTopCases = ({
     ? countries.filter(byContinent(continent)).sort(byCases).slice(0, topNumber)
     : countries.sort(byCases).slice(0, topNumber);
 
-  console.log(getSeries(topCountries, seriesTopics));
   return {
     countriesNames: topCountries.map(country => country.country),
     seriesData: getSeries(topCountries, seriesTopics),

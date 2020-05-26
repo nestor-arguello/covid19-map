@@ -10,7 +10,22 @@ export const ATTRIBUTION =
 
 export const COVID_API_URL = 'https://disease.sh/v2/countries';
 
+export const COUNTRY_SERIES_TOPICS = [
+  {
+    title: 'Confirmed',
+    propName: 'cases',
+  },
+  {
+    title: 'Recovered',
+    propName: 'recovered',
+  },
+  {
+    title: 'Deaths',
+    propName: 'deaths',
+  },
+];
+
 /**
  * old API's URL
- */ 
+ */
 // export const COVID_API_URL = 'https://corona.lmao.ninja/v2/countries';

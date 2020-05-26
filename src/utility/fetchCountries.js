@@ -11,8 +11,6 @@ const fetchCountries = async dispatch => {
 
     if (typeof dispatch === 'function') dispatch(setCountries(data));
 
-    console.log(data);
-
     return data;
   } catch (error) {
     alert('Communication error fetching countries data. Please refresh the page in a few minutes.');
